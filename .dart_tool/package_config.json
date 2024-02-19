@@ -116,6 +116,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "http",
+      "rootUri": "file:///Users/nono/.pub-cache/hosted/pub.dev/http-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "http_multi_server",
       "rootUri": "file:///Users/nono/.pub-cache/hosted/pub.dev/http_multi_server-3.2.1",
       "packageUri": "lib/",
@@ -386,7 +392,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-09T19:38:37.073655Z",
+  "generated": "2024-02-19T21:05:05.436032Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }
