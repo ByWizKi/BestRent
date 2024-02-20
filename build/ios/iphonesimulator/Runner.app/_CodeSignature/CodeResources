@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		mPb2TT+zLwqWX/Vpa/LK2J38Z50=
+		xuoVTHM/toMAPTiCg+9EOu42ESo=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		gziwps/clMK3g3M49IO+EsL9gZs=
+		thiumJlHg93ElpGJYX0/ah3pByw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		UPpVRocMGXZWKw7Ta9quRqmjwU4=
+		aankixRyJ5K6X7o9Ia2KbslRPac=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		1YEf+/vruk14qmUGc/A/GMB7jGc=
+		HvhDlXVfrEdKILRfJPFAjEFfnF0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -200,9 +200,53 @@
 		<data>
 		Ubat0LvE4LUgCwHeyl0Anx2vnzk=
 		</data>
+		<key>Frameworks/flutter_keyboard_visibility.framework/Info.plist</key>
+		<data>
+		X5ZDw2EtBYryF/xTetmSh+3eyP0=
+		</data>
+		<key>Frameworks/flutter_keyboard_visibility.framework/_CodeSignature/CodeResources</key>
+		<data>
+		T8bgOxcjwc9m+uwLIzR6mBpmNck=
+		</data>
+		<key>Frameworks/flutter_keyboard_visibility.framework/flutter_keyboard_visibility</key>
+		<data>
+		+HxM5kme5dk3fNoyFXMy4wSKT9k=
+		</data>
+		<key>Frameworks/geolocator_apple.framework/Info.plist</key>
+		<data>
+		wbNYM1FCaqV6KxTt3ScHM9zazG4=
+		</data>
+		<key>Frameworks/geolocator_apple.framework/_CodeSignature/CodeResources</key>
+		<data>
+		H1leXjMzDoBLnEtlhesDnV1IlIk=
+		</data>
+		<key>Frameworks/geolocator_apple.framework/geolocator_apple</key>
+		<data>
+		1cIJDtcERKF79NBDYUpaF1qiA2o=
+		</data>
+		<key>Frameworks/pointer_interceptor_ios.framework/Info.plist</key>
+		<data>
+		+w9KGa07Zma4fH2WsUaJ6Ald8TE=
+		</data>
+		<key>Frameworks/pointer_interceptor_ios.framework/_CodeSignature/CodeResources</key>
+		<data>
+		Egf/nDlAluSjBhvHQf8PsjPnsGA=
+		</data>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios</key>
+		<data>
+		Kyog4xb46cb47TNlePpYd4iCfNA=
+		</data>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios_privacy.bundle/Info.plist</key>
+		<data>
+		oJwmrM6aMnPaulI1Y/fcSwlBX+A=
+		</data>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		5anSb9QpJIRpMIQhopkRKgDnQxo=
+		X6174VAROm+PI8quugpxQb67z68=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -285,7 +329,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IGnbeMHF1BmddEBddchsYFAEw2tEzfbHZMAH/WvdXUc=
+			yXMRJy6BEevr5+vqsa6Uh7rS/5BYWkBsiqFTj1OCY2c=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -299,7 +343,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ppRiyv/rutiCRiu4qufsLxv/Gt5xbO+IVMRJLEKBFCI=
+			oVOc1aZnaD8kzdSTZnbmd8coFsOSHbscnano8MPhxJ0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -327,7 +371,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/LxPRZq9PtjGM7sDLbbcsVi+svyP5Ov9digCsVnCjXI=
+			KVxQhqH5eTMqaTF0NUvASq9RVrRPphreE/Auq+fb+34=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -348,7 +392,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m0iClif5uxDVTrrd0Pr4pgUAJpvsCwCNq2Xul8GlRz8=
+			HiErCld6I1/XixIHtD600yI4LZMvp4eX0bW1Uo84V9U=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -552,6 +596,83 @@
 			<key>hash2</key>
 			<data>
 			ZepykIMSjfzhwAcmupMrkaqvXkhza1ZE3TdHjl8odaw=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_keyboard_visibility.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TGXvjecReQVpOcR8eXjweM1w17gPz4dTDKx12qJZIec=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_keyboard_visibility.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Q9IAo6+rwbRsQOCV5sGLucEdaZBDN/ZTpBCGBFVXMYc=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_keyboard_visibility.framework/flutter_keyboard_visibility</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			o+H20rL6j+Hx+cU0OxV03kPO+eDF+GdJJDwQicgitXo=
+			</data>
+		</dict>
+		<key>Frameworks/geolocator_apple.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EbPgwj31/Fo6CfcE3GVt9iQmGQL4l5gNansJ5qWuRSk=
+			</data>
+		</dict>
+		<key>Frameworks/geolocator_apple.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5saBW5P0vpiGTtjAP92UXIF3rGN0uoVVkCKcMTtl3iM=
+			</data>
+		</dict>
+		<key>Frameworks/geolocator_apple.framework/geolocator_apple</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WECWfFiT8meKsMJ4GIP0Nt0Ot9hGxRZcY+RLyXtG3zg=
+			</data>
+		</dict>
+		<key>Frameworks/pointer_interceptor_ios.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			O1TPNJc3lz1//AagPFbcnzDeOPztNw8ot2ddaIXFYVg=
+			</data>
+		</dict>
+		<key>Frameworks/pointer_interceptor_ios.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HU4IKEiqT8fqKXl/KOrTxnP3IGX5bedy42tEWduyCSg=
+			</data>
+		</dict>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rvUklMca88TGumqvKU6HDFMxlNClNtsdXfhUCjWSlz0=
+			</data>
+		</dict>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			q/ZgL/ujeWqQt4o+UcCwVbaPO2OB/bItgpFmJOlHX6Q=
+			</data>
+		</dict>
+		<key>Frameworks/pointer_interceptor_ios.framework/pointer_interceptor_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 	</dict>

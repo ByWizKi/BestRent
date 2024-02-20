@@ -1,34 +1,80 @@
-// fichier: lib/views/position_screen.dart
-
-import 'package:best_rent/views/screens/pick_up_datetime_screen.dart'; // Assurez-vous d'importer correctement PickUpDateTimeScreen
+import 'package:best_rent/controllers/user_controller.dart';
+import 'package:best_rent/models/user.dart';
+import 'package:best_rent/views/screens/pick_up_datetime_screen.dart';
 import 'package:flutter/material.dart';
 
-class PositionScreen extends StatelessWidget {
-  const PositionScreen({super.key});
+class UserLocationPage extends StatefulWidget {
+  const UserLocationPage({super.key});
+
+  @override
+  _UserLocationPageState createState() => _UserLocationPageState();
+}
+
+class _UserLocationPageState extends State<UserLocationPage> {
+  final UserController _userController =
+      UserController(User(longitude: 0.0, latitude: 0.0));
+  final List<String> _cities = [
+    'Paris',
+    'Marseille',
+    'Genève',
+    'Lyon',
+    'Londres'
+  ];
+  String _locationMessage = '';
+
+  Future<void> _updateLocationDisplay() async {
+    String cityName =
+        await _userController.user.coordinatesToCity() ?? 'Ville inconnue';
+    setState(() {
+      _locationMessage =
+          'Longitude: ${_userController.user.longitude}, Latitude: ${_userController.user.latitude}, Ma ville : $cityName';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Position'),
-        automaticallyImplyLeading: false,
+        title: const Text('Mise à jour de la localisation'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Position Screen', style: TextStyle(fontSize: 24)),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PickUpDateTimeScreen()));
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(_locationMessage),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              await _userController.updateCoordinatesFromDevice();
+              await _updateLocationDisplay();
+            },
+            child: const Text('Utiliser ma position actuelle'),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _cities.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(_cities[index]),
+                  onTap: () async {
+                    await _userController
+                        .updateCoordinatesFromCity(_cities[index]);
+                    await _updateLocationDisplay();
+                  },
+                );
               },
-              child: const Text('Go to Pick Up Date & Time'),
             ),
-          ],
-        ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PickUpDateTimeScreen()));
+            },
+            child: const Text('Valider'),
+          )
+        ],
       ),
     );
   }

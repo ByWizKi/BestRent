@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_getters_setters, avoid_print
 
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 
 /// Classe User pour représenter un utilisateur avec ses informations géographiques et temporelles.

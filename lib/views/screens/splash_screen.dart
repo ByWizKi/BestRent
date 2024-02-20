@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Naviguer vers PositionScreen et supprimer toutes les routes précédentes
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => PositionScreen()));
+        context, MaterialPageRoute(builder: (context) => UserLocationPage()));
   }
 
   @override
