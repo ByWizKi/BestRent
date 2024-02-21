@@ -1,6 +1,8 @@
 // ignore_for_file: unnecessary_getters_setters, avoid_print
 
+import 'dart:async';
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 /// Classe User pour représenter un utilisateur avec ses informations géographiques et temporelles.
@@ -72,12 +74,14 @@ class User {
   Future<String?> coordinatesToCity() async {
     var url = Uri.parse(
         'https://nominatim.openstreetmap.org/reverse?format=json&lat=$_latitude&lon=$_longitude');
-
+    print(url);
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        return data['address']['city'] ?? 'Ville inconnue';
+        print (data['address']);
+        return data['address']['city'] ?? data['address']['town'] ?? data['address']['village'] ?? 'Ville inconnue';
+
       } else {
         print('Erreur de réponse : ${response.statusCode}');
         return 'Échec de la récupération du nom de la ville';
@@ -88,16 +92,18 @@ class User {
     }
   }
 
-   /// Définit les coordonnées de l'utilisateur en fonction du nom de la ville.
+  /// Définit les coordonnées de l'utilisateur en fonction du nom de la ville.
   /// Utilise l'API Nominatim pour le géocodage inversé.
   ///
   /// [city] Le nom de la ville pour laquelle récupérer les coordonnées.
   Future<void> setCoordinatesFromCity(String city) async {
-    var url = Uri.parse('https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=1');
-
+    var url = Uri.parse(
+        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=1'); 
+    
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
+
         var data = json.decode(response.body);
         if (data.isNotEmpty) {
           _latitude = double.parse(data[0]['lat']);
@@ -111,5 +117,30 @@ class User {
     } catch (e) {
       print('Exception attrapée : $e');
     }
+  }
+
+    Future<List<String>> setCoordinatesFromCityList(String city) async {
+    var url = Uri.parse(
+        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=5'); 
+    
+    try {
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+
+        var data = json.decode(response.body);
+        if (data.isNotEmpty) {
+          return data.map((e) => e['display_name']).toList();
+        } else {
+          print('Aucun résultat trouvé pour cette ville');
+          return [];
+        }
+      } else {
+        print('Erreur de réponse : ${response.statusCode}');
+        return [];
+      }
+    } catch (e) {
+      print('Exception attrapée : $e');
+      return [];
+    } 
   }
 }

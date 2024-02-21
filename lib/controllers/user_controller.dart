@@ -16,6 +16,10 @@ class UserController {
     await user.setCoordinatesFromCity(city);
   }
 
+  Future<List<String>> updateCoordinatesFromCityList(String city) async {
+    return await user.setCoordinatesFromCityList(city);
+  }
+
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;

@@ -20,6 +20,8 @@ class _UserLocationPageState extends State<UserLocationPage> {
     'Lyon',
     'Londres'
   ];
+  final List<String> _suggestions = [];
+  String _mySearchCity = '';
   String _locationMessage = '';
 
   Future<void> _updateLocationDisplay() async {
@@ -49,6 +51,21 @@ class _UserLocationPageState extends State<UserLocationPage> {
               await _updateLocationDisplay();
             },
             child: const Text('Utiliser ma position actuelle'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Ville',
+              ),
+              onSubmitted: (value) async {
+                _mySearchCity = value.toString().toUpperCase();
+                await _userController.updateCoordinatesFromCity(_mySearchCity);
+                await _updateLocationDisplay();
+               await _suggestions = _userController.updateCoordinatesFromCityList(_mySearchCity);
+              },
+            ),
           ),
           Expanded(
             child: ListView.builder(
