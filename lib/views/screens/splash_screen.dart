@@ -3,6 +3,8 @@ import 'package:best_rent/views/screens/position_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -15,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 3), () {});
+    await Future.delayed(const Duration(seconds: 2), () {});
 
     // Naviguer vers PositionScreen et supprimer toutes les routes précédentes
     Navigator.pushReplacement(
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

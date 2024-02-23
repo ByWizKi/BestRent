@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:best_rent/controllers/user_controller.dart';
 import 'package:best_rent/models/user.dart';
 import 'package:best_rent/views/screens/pick_up_datetime_screen.dart';
@@ -20,8 +22,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
     'Lyon',
     'Londres'
   ];
-  final List<String> _suggestions = [];
-  String _mySearchCity = '';
+  String? _mySearchCity;
   String _locationMessage = '';
 
   Future<void> _updateLocationDisplay() async {
@@ -37,7 +38,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mise à jour de la localisation'),
+        title: const Text('Position'),
       ),
       body: Column(
         children: <Widget>[
@@ -45,28 +46,65 @@ class _UserLocationPageState extends State<UserLocationPage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(_locationMessage),
           ),
+          // Boutton pour utiliser la position actuelle
           ElevatedButton(
             onPressed: () async {
               await _userController.updateCoordinatesFromDevice();
               await _updateLocationDisplay();
+              String? cityName = await _userController.user.coordinatesToCity();
+              if (cityName != null) {
+                List<String> cityListInfo =
+                    await _userController.getInfoCity(cityName);
+                String contentDialog = 'Ville : $cityName\n';
+                if (cityListInfo[1].isNotEmpty) {
+                  contentDialog += 'Code postal : ${cityListInfo[1]}\n';
+                }
+                if (cityListInfo[2].isNotEmpty) {
+                  contentDialog += 'Region : ${cityListInfo[2]}\n';
+                }
+                if (cityListInfo[3].isNotEmpty) {
+                  contentDialog += 'Pays : ${cityListInfo[3]}';
+                }
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Votre localisation est ici : $cityName'),
+                      content: Text(contentDialog),
+                    );
+                  },
+                );
+              }
+              // Attendre 1 seconde
+              await Future.delayed(const Duration(seconds: 2));
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PickUpDateTimeScreen()));
             },
             child: const Text('Utiliser ma position actuelle'),
           ),
+          // Saisie de la ville
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Ville',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: _mySearchCity ?? 'Saisissez votre ville',
+                helperText: 'Saisissez une ville',
               ),
+              onChanged: (value) => setState(() {
+                _mySearchCity = value;
+              }),
               onSubmitted: (value) async {
-                _mySearchCity = value.toString().toUpperCase();
-                await _userController.updateCoordinatesFromCity(_mySearchCity);
+                await _userController.updateCoordinatesFromCity(value);
+                _mySearchCity = await _userController.user.coordinatesToCity();
                 await _updateLocationDisplay();
-               await _suggestions = _userController.updateCoordinatesFromCityList(_mySearchCity);
               },
             ),
           ),
+          // Liste des villes en suggestion
           Expanded(
             child: ListView.builder(
               itemCount: _cities.length,
@@ -77,13 +115,45 @@ class _UserLocationPageState extends State<UserLocationPage> {
                     await _userController
                         .updateCoordinatesFromCity(_cities[index]);
                     await _updateLocationDisplay();
+                    setState(() {
+                      _mySearchCity = _cities[index];
+                    });
                   },
                 );
               },
             ),
           ),
+          // Boutton de validation
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              String? cityName = await _userController.user.coordinatesToCity();
+              if (cityName != null) {
+                List<String> cityListInfo =
+                    await _userController.getInfoCity(cityName);
+                String contentDialog = 'Ville : $cityName\n';
+                if (cityListInfo.isNotEmpty && cityListInfo[1].isNotEmpty) {
+                  contentDialog += 'Code postal : ${cityListInfo[1]}\n';
+                }
+                if (cityListInfo.isNotEmpty && cityListInfo[2].isNotEmpty) {
+                  contentDialog += 'Region : ${cityListInfo[2]}\n';
+                }
+                if (cityListInfo.isNotEmpty && cityListInfo[3].isNotEmpty) {
+                  contentDialog += 'Pays : ${cityListInfo[3]}';
+                }
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Votre localisation est ici : $cityName'),
+                      content: Text(contentDialog),
+                    );
+                  },
+                );
+              }
+              // Attendre 1 seconde
+              await Future.delayed(const Duration(seconds: 1));
+              Navigator.pop(context);
+
               Navigator.push(
                   context,
                   MaterialPageRoute(

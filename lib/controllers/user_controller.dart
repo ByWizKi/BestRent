@@ -16,9 +16,15 @@ class UserController {
     await user.setCoordinatesFromCity(city);
   }
 
+  Future <List<String>> getInfoCity(String city) async {
+    return await user.getInfoCity(city); 
+  }
+  
+  /* Fonction non fini utiliser a voir pour la v2
   Future<List<String>> updateCoordinatesFromCityList(String city) async {
     return await user.setCoordinatesFromCityList(city);
   }
+  */
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;

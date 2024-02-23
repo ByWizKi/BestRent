@@ -74,14 +74,14 @@ class User {
   Future<String?> coordinatesToCity() async {
     var url = Uri.parse(
         'https://nominatim.openstreetmap.org/reverse?format=json&lat=$_latitude&lon=$_longitude');
-    print(url);
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print (data['address']);
-        return data['address']['city'] ?? data['address']['town'] ?? data['address']['village'] ?? 'Ville inconnue';
-
+        return data['address']['city'] ??
+            data['address']['town'] ??
+            data['address']['village'] ??
+            'Ville inconnue';
       } else {
         print('Erreur de réponse : ${response.statusCode}');
         return 'Échec de la récupération du nom de la ville';
@@ -98,12 +98,11 @@ class User {
   /// [city] Le nom de la ville pour laquelle récupérer les coordonnées.
   Future<void> setCoordinatesFromCity(String city) async {
     var url = Uri.parse(
-        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=1'); 
-    
+        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=1');
+
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
-
         var data = json.decode(response.body);
         if (data.isNotEmpty) {
           _latitude = double.parse(data[0]['lat']);
@@ -119,14 +118,49 @@ class User {
     }
   }
 
-    Future<List<String>> setCoordinatesFromCityList(String city) async {
+  Future<List<String>> getInfoCity(String city) async {
+    List<String> infoCity = [];
     var url = Uri.parse(
-        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=5'); 
-    
+        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=1&addressdetails=1');
     try {
       var response = await http.get(url);
       if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        print(data);
+        if (data.isNotEmpty) {
+          infoCity = [
+            data[0]['address']['town'] ??
+                data[0]['address']['village'] ??
+                data[0]['address']['city'] ??
+                'Ville inconnue',
+            data[0]['address']['postcode'] ?? '',
+            data[0]['address']['region'] ?? '',
+            data[0]['address']['country'] ?? '',
+          ];
+          
+          return infoCity;
+        } else {
+          print('Aucun résultat pour cette ville');
+          return [];
+        }
+      } else {
+        print('Erreur de requête : ${response.statusCode}');
+        return [];
+      }
+    } catch (e) {
+      print('Exception attrapée : $e');
+      return [];
+    }
+  }
 
+  /* Fonction non fini utiliser a voir pour la v2
+  Future<List<String>> setCoordinatesFromCityList(String city) async {
+    var url = Uri.parse(
+        'https://nominatim.openstreetmap.org/search?city=$city&format=json&limit=5');
+
+    try {
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
         var data = json.decode(response.body);
         if (data.isNotEmpty) {
           return data.map((e) => e['display_name']).toList();
@@ -141,6 +175,7 @@ class User {
     } catch (e) {
       print('Exception attrapée : $e');
       return [];
-    } 
+    }
   }
+  */
 }
