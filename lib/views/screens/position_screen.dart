@@ -1,8 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:best_rent/controllers/user_controller.dart';
-import 'package:best_rent/models/user.dart';
-import 'package:best_rent/views/screens/pick_up_datetime_screen.dart';
+import 'package:best_rent/views/screens/pick_date_time.dart';
 import 'package:flutter/material.dart';
 
 class UserLocationPage extends StatefulWidget {
@@ -13,8 +12,7 @@ class UserLocationPage extends StatefulWidget {
 }
 
 class _UserLocationPageState extends State<UserLocationPage> {
-  final UserController _userController =
-      UserController(User(longitude: 0.0, latitude: 0.0));
+  final UserController _userController = userController;
   final List<String> _cities = [
     'Paris',
     'Marseille',
@@ -81,7 +79,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const PickUpDateTimeScreen()));
+                      builder: (context) => PickUpDateTimeScreen()));
             },
             child: const Text('Utiliser ma position actuelle'),
           ),
@@ -157,7 +155,7 @@ class _UserLocationPageState extends State<UserLocationPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const PickUpDateTimeScreen()));
+                      builder: (context) => PickUpDateTimeScreen()));
             },
             child: const Text('Valider'),
           )

@@ -1,4 +1,4 @@
-import 'package:best_rent/views/screens/pick_up_datetime_screen.dart';
+import 'package:best_rent/views/screens/pick_date_time.dart';
 import 'package:best_rent/views/screens/position_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

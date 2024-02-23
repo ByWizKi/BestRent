@@ -12,6 +12,7 @@ class BestRentApp extends StatelessWidget {
       title: 'Best Rent',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(), // Démarre avec SplashScreen
+      
     );
   }
 }
